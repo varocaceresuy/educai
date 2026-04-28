@@ -8,7 +8,7 @@ import {
 import {
   LayoutDashboard, TrendingUp, Lightbulb, User,
   Upload, BookOpen, Brain, Music, Palette, Star,
-  AlertCircle, Camera, ChevronRight, Award
+  AlertCircle, Camera, ChevronRight, Award, Sparkles
 } from 'lucide-react'
 
 const evolucion = [
@@ -17,11 +17,11 @@ const evolucion = [
 ]
 
 const fortalezas = [
-  { icon: BookOpen, label: 'Expresión oral',        desc: 'Vocabulario rico, estructura correcta, buena memoria', color: 'text-blue-500',   bg: 'bg-blue-50',   border: 'border-blue-100' },
+  { icon: BookOpen, label: 'Expresión oral',        desc: 'Vocabulario rico, estructura correcta, buena memoria', color: 'text-indigo-500',  bg: 'bg-indigo-50',  border: 'border-indigo-100' },
   { icon: Brain,    label: 'Matemáticas y lógica',  desc: 'Números 1-6, conceptos espaciales, sumas gráficas',   color: 'text-violet-500', bg: 'bg-violet-50', border: 'border-violet-100' },
-  { icon: Music,    label: 'Música',                desc: 'Brilla con ritmo y movimiento',                        color: 'text-pink-500',   bg: 'bg-pink-50',   border: 'border-pink-100' },
-  { icon: Star,     label: 'Inglés avanzado',       desc: 'Todo verde · evaluación 3 estrellas',                 color: 'text-amber-500',  bg: 'bg-amber-50',  border: 'border-amber-100' },
-  { icon: Palette,  label: 'Creatividad artística', desc: 'Destacado en Reinarte y producciones plásticas',      color: 'text-orange-500', bg: 'bg-orange-50', border: 'border-orange-100' },
+  { icon: Music,    label: 'Música',                desc: 'Brilla con ritmo y movimiento',                        color: 'text-purple-500', bg: 'bg-purple-50', border: 'border-purple-100' },
+  { icon: Star,     label: 'Inglés avanzado',       desc: 'Todo verde · evaluación 3 estrellas',                 color: 'text-blue-500',   bg: 'bg-blue-50',   border: 'border-blue-100' },
+  { icon: Palette,  label: 'Creatividad artística', desc: 'Destacado en Reinarte y producciones plásticas',      color: 'text-fuchsia-500', bg: 'bg-fuchsia-50', border: 'border-fuchsia-100' },
 ]
 
 const recomendaciones = [
@@ -47,18 +47,20 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col max-w-md mx-auto relative">
+    <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto relative">
 
       {/* Header */}
-      <header className="bg-white border-b border-gray-100 px-5 pt-10 pb-4 sticky top-0 z-10">
+      <header className="bg-white border-b border-slate-100 px-5 pt-10 pb-4 sticky top-0 z-10 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-orange-500 text-white p-1.5 rounded-lg">
-              <BookOpen className="w-4 h-4" />
+            <div className="bg-gradient-to-br from-indigo-500 to-violet-600 text-white p-1.5 rounded-xl shadow-sm">
+              <Sparkles className="w-4 h-4" />
             </div>
-            <span className="font-bold text-gray-900 text-lg">EducAI</span>
+            <span className="font-bold text-slate-900 text-lg tracking-tight">EducAI</span>
           </div>
-          <span className="text-xs text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full">Curso 2025-26</span>
+          <span className="text-xs text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full font-medium border border-indigo-100">
+            Curso 2025–26
+          </span>
         </div>
       </header>
 
@@ -68,71 +70,89 @@ export default function DashboardPage() {
         {/* RESUMEN */}
         {tab === 'resumen' && (
           <>
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-              <div className="flex items-center gap-4 mb-4">
+            {/* Card hijo */}
+            <div className="bg-white rounded-3xl border border-slate-100 p-5 shadow-sm">
+              <div className="flex items-center gap-4 mb-5">
                 <button
                   onClick={() => fileRef.current?.click()}
-                  className="relative w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center overflow-hidden flex-shrink-0 border-2 border-orange-200"
+                  className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center overflow-hidden flex-shrink-0 border-2 border-indigo-200"
                 >
                   {photo
                     ? <img src={photo} alt="Domenico" className="w-full h-full object-cover" />
-                    : <span className="text-2xl font-bold text-orange-500">D</span>
+                    : <span className="text-2xl font-bold text-indigo-500">D</span>
                   }
+                  <div className="absolute bottom-0 right-0 bg-gradient-to-br from-indigo-500 to-violet-600 text-white p-1 rounded-tl-lg">
+                    <Camera className="w-3 h-3" />
+                  </div>
                 </button>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">Domenico</h2>
-                  <p className="text-xs text-gray-500">4 años · 2º EI · Arenales Reinado</p>
-                  <p className="text-xs text-gray-400 mt-0.5">Tutora: Alicia Martín</p>
+                  <h2 className="text-xl font-bold text-slate-900">Domenico</h2>
+                  <p className="text-xs text-slate-500">4 años · 2º EI · Arenales Reinado</p>
+                  <p className="text-xs text-slate-400 mt-0.5">Tutora: Alicia Martín</p>
                 </div>
               </div>
-              <div className="flex gap-0.5 h-2.5 rounded-full overflow-hidden mb-3">
-                <div className="bg-green-500 rounded-l-full" style={{ width: '83%' }} />
+
+              {/* Barra progreso */}
+              <div className="flex gap-0.5 h-2 rounded-full overflow-hidden mb-4">
+                <div className="bg-gradient-to-r from-indigo-500 to-violet-500 rounded-l-full" style={{ width: '83%' }} />
                 <div className="bg-amber-400" style={{ width: '15%' }} />
                 <div className="bg-red-400 rounded-r-full" style={{ width: '2%' }} />
               </div>
+
+              {/* Scores */}
               <div className="grid grid-cols-3 gap-2">
-                {[
-                  { n: 40, label: 'Superado',    emoji: '✅', color: 'text-green-600', bg: 'bg-green-50' },
-                  { n: 7,  label: 'En progreso', emoji: '⚠️', color: 'text-amber-600', bg: 'bg-amber-50' },
-                  { n: 1,  label: 'Con apoyo',   emoji: '🎯', color: 'text-red-500',   bg: 'bg-red-50' },
-                ].map(s => (
-                  <div key={s.label} className={`${s.bg} rounded-xl py-3 text-center`}>
-                    <div className={`text-2xl font-bold ${s.color}`}>{s.n}</div>
-                    <div className="text-[10px] font-medium text-gray-500 mt-0.5">{s.emoji} {s.label}</div>
-                  </div>
-                ))}
+                <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-2xl py-3 text-center border border-indigo-100">
+                  <div className="text-2xl font-bold text-indigo-600">40</div>
+                  <div className="text-[10px] font-medium text-indigo-400 mt-0.5">✅ Superado</div>
+                </div>
+                <div className="bg-amber-50 rounded-2xl py-3 text-center border border-amber-100">
+                  <div className="text-2xl font-bold text-amber-500">7</div>
+                  <div className="text-[10px] font-medium text-amber-400 mt-0.5">⚠️ En progreso</div>
+                </div>
+                <div className="bg-red-50 rounded-2xl py-3 text-center border border-red-100">
+                  <div className="text-2xl font-bold text-red-400">1</div>
+                  <div className="text-[10px] font-medium text-red-400 mt-0.5">🎯 Con apoyo</div>
+                </div>
               </div>
             </div>
 
-            <div className="bg-blue-50 rounded-2xl border border-blue-100 p-4">
-              <p className="text-[11px] font-semibold text-blue-400 uppercase tracking-wide mb-1.5">Tutora · 2º Trimestre</p>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                &ldquo;Dome progresa adecuadamente en todas las áreas. Destaca en expresión oral con vocabulario rico y buena memoria. Cada vez más interesado en la lectura y más maduro e independiente.&rdquo;
+            {/* Nota tutora */}
+            <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-3xl border border-indigo-100 p-4">
+              <div className="flex items-center gap-1.5 mb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                <p className="text-[11px] font-semibold text-indigo-400 uppercase tracking-wide">Tutora · 2º Trimestre</p>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                &ldquo;Dome progresa adecuadamente en todas las áreas. Destaca en expresión oral con vocabulario rico y buena memoria. Cada vez más maduro e independiente.&rdquo;
               </p>
             </div>
 
+            {/* Fortalezas */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2 px-1">🌟 Fortalezas</p>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3 px-1">✨ Fortalezas</p>
               <div className="space-y-2">
                 {fortalezas.map(f => (
                   <div key={f.label} className={`${f.bg} ${f.border} border rounded-2xl p-4 flex items-center gap-3`}>
-                    <f.icon className={`w-5 h-5 ${f.color} flex-shrink-0`} />
-                    <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-gray-900 text-sm">{f.label}</p>
-                      <p className="text-xs text-gray-500 truncate">{f.desc}</p>
+                    <div className={`${f.color} flex-shrink-0 p-2 bg-white rounded-xl shadow-sm`}>
+                      <f.icon className="w-4 h-4" />
                     </div>
-                    <ChevronRight className="w-4 h-4 text-gray-300 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-slate-800 text-sm">{f.label}</p>
+                      <p className="text-xs text-slate-500 truncate">{f.desc}</p>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-slate-300 flex-shrink-0" />
                   </div>
                 ))}
               </div>
             </div>
 
-            <button className="w-full bg-white border-2 border-dashed border-orange-200 rounded-2xl p-5 flex flex-col items-center gap-2">
-              <div className="bg-orange-100 p-3 rounded-xl">
-                <Upload className="w-5 h-5 text-orange-500" />
+            {/* Upload */}
+            <button className="w-full bg-white border-2 border-dashed border-indigo-200 rounded-3xl p-5 flex flex-col items-center gap-2 hover:bg-indigo-50 transition-colors">
+              <div className="bg-gradient-to-br from-indigo-100 to-violet-100 p-3 rounded-2xl">
+                <Upload className="w-5 h-5 text-indigo-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-700">Subir 3er trimestre</p>
-              <p className="text-xs text-gray-400">Toca para seleccionar el PDF</p>
+              <p className="text-sm font-semibold text-slate-700">Subir 3er trimestre</p>
+              <p className="text-xs text-slate-400">Toca para seleccionar el PDF</p>
             </button>
           </>
         )}
@@ -140,41 +160,43 @@ export default function DashboardPage() {
         {/* EVOLUCIÓN */}
         {tab === 'evolucion' && (
           <>
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-              <h3 className="font-bold text-gray-900 mb-1">Evolución T1 → T2</h3>
-              <p className="text-xs text-gray-500 mb-5">+5 áreas superadas · redujo de 2 a 1 con apoyo</p>
+            <div className="bg-white rounded-3xl border border-slate-100 p-5 shadow-sm">
+              <h3 className="font-bold text-slate-900 mb-1">Evolución T1 → T2</h3>
+              <p className="text-xs text-slate-400 mb-5">+5 áreas superadas · redujo de 2 a 1 con apoyo</p>
               <ResponsiveContainer width="100%" height={220}>
                 <LineChart data={evolucion} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f5f5f5" />
-                  <XAxis dataKey="trimestre" tick={{ fontSize: 11 }} />
-                  <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip contentStyle={{ borderRadius: '12px', border: '1px solid #e5e7eb', fontSize: '12px' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis dataKey="trimestre" tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                  <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                  <Tooltip contentStyle={{ borderRadius: '16px', border: '1px solid #e2e8f0', fontSize: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                   <Legend wrapperStyle={{ fontSize: '11px' }} />
-                  <Line type="monotone" dataKey="superado" stroke="#22c55e" name="Superado" strokeWidth={2.5} dot={{ r: 5 }} />
-                  <Line type="monotone" dataKey="progreso" stroke="#f59e0b" name="En progreso" strokeWidth={2.5} dot={{ r: 5 }} />
-                  <Line type="monotone" dataKey="atencion" stroke="#ef4444" name="Con apoyo" strokeWidth={2.5} dot={{ r: 5 }} />
+                  <Line type="monotone" dataKey="superado" stroke="#6366f1" name="Superado" strokeWidth={2.5} dot={{ r: 5, fill: '#6366f1' }} />
+                  <Line type="monotone" dataKey="progreso" stroke="#f59e0b" name="En progreso" strokeWidth={2.5} dot={{ r: 5, fill: '#f59e0b' }} />
+                  <Line type="monotone" dataKey="atencion" stroke="#f87171" name="Con apoyo" strokeWidth={2.5} dot={{ r: 5, fill: '#f87171' }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
               {[
-                { icon: TrendingUp, val: '+5',  label: 'más superadas',  color: 'text-green-600', bg: 'bg-green-50' },
-                { icon: Award,      val: '3⭐', label: 'Inglés avanzado', color: 'text-amber-600', bg: 'bg-amber-50' },
-                { icon: TrendingUp, val: '-1',  label: 'área con apoyo', color: 'text-blue-600',  bg: 'bg-blue-50' },
+                { icon: TrendingUp, val: '+5',  label: 'más superadas',   from: 'from-indigo-500', to: 'to-violet-500' },
+                { icon: Award,      val: '3⭐', label: 'Inglés avanzado',  from: 'from-blue-400',   to: 'to-indigo-500' },
+                { icon: TrendingUp, val: '-1',  label: 'área con apoyo',  from: 'from-violet-500', to: 'to-purple-600' },
               ].map(s => (
-                <div key={s.label} className={`${s.bg} rounded-2xl p-4 text-center`}>
-                  <s.icon className={`w-5 h-5 ${s.color} mx-auto mb-1`} />
-                  <p className={`text-xl font-bold ${s.color}`}>{s.val}</p>
-                  <p className="text-[10px] text-gray-500 mt-0.5 leading-tight">{s.label}</p>
+                <div key={s.label} className="bg-white rounded-2xl p-4 text-center border border-slate-100 shadow-sm">
+                  <div className={`bg-gradient-to-br ${s.from} ${s.to} text-white w-8 h-8 rounded-xl flex items-center justify-center mx-auto mb-2`}>
+                    <s.icon className="w-4 h-4" />
+                  </div>
+                  <p className="text-xl font-bold text-slate-800">{s.val}</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5 leading-tight">{s.label}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-orange-50 border border-orange-100 rounded-2xl p-4">
-              <p className="text-xs font-semibold text-orange-500 uppercase tracking-wide mb-1">Patrón detectado</p>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Domenico aprende mejor cuando algo le <strong>motiva intrínsecamente</strong>. Conecta los ejercicios con sus intereses para mejores resultados.
+            <div className="bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 rounded-3xl p-4">
+              <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wide mb-1">Patrón detectado</p>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Domenico aprende mejor cuando algo le <strong className="text-indigo-600">motiva intrínsecamente</strong>. Conecta los ejercicios con sus intereses para mejores resultados.
               </p>
             </div>
           </>
@@ -183,24 +205,27 @@ export default function DashboardPage() {
         {/* RECOMENDACIONES */}
         {tab === 'recomendaciones' && (
           <>
-            <div className="bg-orange-50 border border-orange-100 rounded-2xl p-4">
-              <p className="text-sm text-orange-800 leading-relaxed">
-                <strong>💡 Clave:</strong> Dome aprende mejor cuando algo le motiva. Conecta siempre los ejercicios con sus intereses.
+            <div className="bg-gradient-to-br from-violet-50 to-indigo-50 border border-violet-100 rounded-3xl p-4">
+              <p className="text-sm text-slate-600 leading-relaxed">
+                <strong className="text-violet-600">💡 Clave:</strong> Dome aprende mejor cuando algo le motiva. Conecta siempre los ejercicios con sus intereses.
               </p>
             </div>
+
             <div className="space-y-3">
               {recomendaciones.map(r => (
-                <div key={r.area} className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
+                <div key={r.area} className="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
                   <div className="flex items-start gap-3">
-                    <AlertCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${r.prioridad === 'alta' ? 'text-orange-500' : 'text-blue-400'}`} />
+                    <div className={`p-2 rounded-xl flex-shrink-0 ${r.prioridad === 'alta' ? 'bg-indigo-50' : 'bg-violet-50'}`}>
+                      <AlertCircle className={`w-4 h-4 ${r.prioridad === 'alta' ? 'text-indigo-500' : 'text-violet-400'}`} />
+                    </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <p className="font-semibold text-gray-900 text-sm">{r.area}</p>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${r.prioridad === 'alta' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}>
+                        <p className="font-semibold text-slate-800 text-sm">{r.area}</p>
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${r.prioridad === 'alta' ? 'bg-indigo-100 text-indigo-600' : 'bg-violet-100 text-violet-600'}`}>
                           {r.prioridad === 'alta' ? 'Prioritario' : 'Recomendado'}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 leading-relaxed">{r.accion}</p>
+                      <p className="text-sm text-slate-500 leading-relaxed">{r.accion}</p>
                     </div>
                   </div>
                 </div>
@@ -212,34 +237,39 @@ export default function DashboardPage() {
         {/* PERFIL */}
         {tab === 'perfil' && (
           <>
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm flex flex-col items-center gap-4">
-              <button
-                onClick={() => fileRef.current?.click()}
-                className="relative w-28 h-28 rounded-3xl bg-orange-100 flex items-center justify-center overflow-hidden border-4 border-orange-200"
-              >
-                {photo
-                  ? <img src={photo} alt="Foto" className="w-full h-full object-cover" />
-                  : <span className="text-5xl font-bold text-orange-400">D</span>
-                }
-                <div className="absolute bottom-0 right-0 bg-orange-500 text-white p-1.5 rounded-tl-xl rounded-br-2xl">
+            <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex flex-col items-center gap-4">
+              <div className="relative">
+                <button
+                  onClick={() => fileRef.current?.click()}
+                  className="w-28 h-28 rounded-3xl bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center overflow-hidden border-4 border-white shadow-lg"
+                >
+                  {photo
+                    ? <img src={photo} alt="Foto" className="w-full h-full object-cover" />
+                    : <span className="text-5xl font-bold text-indigo-400">D</span>
+                  }
+                </button>
+                <button
+                  onClick={() => fileRef.current?.click()}
+                  className="absolute -bottom-1 -right-1 bg-gradient-to-br from-indigo-500 to-violet-600 text-white p-2 rounded-xl shadow-md"
+                >
                   <Camera className="w-3.5 h-3.5" />
-                </div>
-              </button>
+                </button>
+              </div>
               <input ref={fileRef} type="file" accept="image/*" onChange={handlePhoto} className="hidden" />
               <div className="text-center">
-                <p className="font-bold text-xl text-gray-900">Domenico</p>
-                <p className="text-sm text-gray-500">4 años · 2º Educación Infantil</p>
+                <p className="font-bold text-xl text-slate-900">Domenico</p>
+                <p className="text-sm text-slate-400">4 años · 2º Educación Infantil</p>
               </div>
               <button
                 onClick={() => fileRef.current?.click()}
-                className="text-sm text-orange-500 font-semibold border border-orange-200 px-4 py-2 rounded-xl"
+                className="text-sm text-indigo-600 font-semibold border border-indigo-200 bg-indigo-50 px-5 py-2 rounded-xl hover:bg-indigo-100 transition-colors"
               >
                 Cambiar foto
               </button>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Información escolar</p>
+            <div className="bg-white rounded-3xl border border-slate-100 p-5 shadow-sm">
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Información escolar</p>
               <div className="space-y-3">
                 {[
                   { label: 'Colegio',        value: 'Arenales Reinado' },
@@ -247,26 +277,26 @@ export default function DashboardPage() {
                   { label: 'Curso',          value: '2025 – 2026' },
                   { label: 'Último boletín', value: '2º Trimestre · Mar 2026' },
                 ].map(item => (
-                  <div key={item.label} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0">
-                    <span className="text-sm text-gray-500">{item.label}</span>
-                    <span className="text-sm font-medium text-gray-900">{item.value}</span>
+                  <div key={item.label} className="flex justify-between items-center py-2 border-b border-slate-50 last:border-0">
+                    <span className="text-sm text-slate-400">{item.label}</span>
+                    <span className="text-sm font-medium text-slate-700">{item.value}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Resumen del curso</p>
+            <div className="bg-white rounded-3xl border border-slate-100 p-5 shadow-sm">
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Resumen del curso</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: 'Boletines analizados', value: '2',   color: 'text-orange-500' },
-                  { label: 'Áreas superadas (T2)', value: '40',  color: 'text-green-600' },
-                  { label: 'Inglés',               value: '3 ⭐', color: 'text-amber-500' },
-                  { label: 'Mejora T1→T2',         value: '+5',  color: 'text-blue-600' },
+                  { label: 'Boletines analizados', value: '2',   gradient: 'from-indigo-500 to-violet-500' },
+                  { label: 'Áreas superadas (T2)', value: '40',  gradient: 'from-violet-500 to-purple-600' },
+                  { label: 'Inglés',               value: '3 ⭐', gradient: 'from-blue-400 to-indigo-500' },
+                  { label: 'Mejora T1→T2',         value: '+5',  gradient: 'from-indigo-400 to-violet-500' },
                 ].map(s => (
-                  <div key={s.label} className="bg-gray-50 rounded-xl p-3 text-center">
-                    <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
-                    <p className="text-[11px] text-gray-500 mt-0.5 leading-tight">{s.label}</p>
+                  <div key={s.label} className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-2xl p-3 text-center border border-slate-100">
+                    <p className={`text-2xl font-bold bg-gradient-to-r ${s.gradient} bg-clip-text text-transparent`}>{s.value}</p>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-tight">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -276,8 +306,8 @@ export default function DashboardPage() {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-gray-100">
-        <div className="flex">
+      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-slate-100 shadow-lg">
+        <div className="flex px-2 py-1">
           {([
             { id: 'resumen',         icon: LayoutDashboard, label: 'Resumen' },
             { id: 'evolucion',       icon: TrendingUp,      label: 'Evolución' },
@@ -289,12 +319,12 @@ export default function DashboardPage() {
               <button
                 key={item.id}
                 onClick={() => setTab(item.id)}
-                className="flex-1 flex flex-col items-center gap-1 py-3 transition-colors"
+                className="flex-1 flex flex-col items-center gap-1 py-2 transition-all"
               >
-                <div className={`p-1.5 rounded-xl transition-colors ${active ? 'bg-orange-500' : ''}`}>
-                  <item.icon className={`w-5 h-5 ${active ? 'text-white' : 'text-gray-400'}`} />
+                <div className={`p-1.5 rounded-xl transition-all ${active ? 'bg-gradient-to-br from-indigo-500 to-violet-600 shadow-md shadow-indigo-200' : ''}`}>
+                  <item.icon className={`w-5 h-5 ${active ? 'text-white' : 'text-slate-400'}`} />
                 </div>
-                <span className={`text-[10px] font-medium ${active ? 'text-orange-500' : 'text-gray-400'}`}>
+                <span className={`text-[10px] font-medium ${active ? 'text-indigo-600' : 'text-slate-400'}`}>
                   {item.label}
                 </span>
               </button>
